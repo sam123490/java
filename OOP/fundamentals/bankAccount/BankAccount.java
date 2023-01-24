@@ -2,7 +2,7 @@ public class BankAccount {
     private double checkingBalance;
     private double savingBalance;
     private static int numOfAccounts;
-    private static float totalMoney;
+    private static double totalMoney;
 
     public BankAccount() {
         this(0.0, 0.0);
@@ -10,6 +10,7 @@ public class BankAccount {
     public BankAccount(double checkBalance, double savBalance) {
         this.checkingBalance = checkBalance;
         this.savingBalance = savBalance;
+        totalMoney += (checkBalance = savBalance);
         numOfAccounts++;
     }
 
@@ -51,4 +52,13 @@ public class BankAccount {
         System.out.println("Checking Balance: $" + this.checkingBalance);
         System.out.println("Saving Balance: $" + this.savingBalance);
     }
+
+    // static methods for static member variables
+    public static void getNumOfAccounts() {
+        System.out.println("Number of Accounts: " + numOfAccounts);
+    }
+    public static void getTotalMoney() {
+        System.out.println("Total money: $" + totalMoney);
+    }
+
 }
