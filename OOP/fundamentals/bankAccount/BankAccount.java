@@ -5,16 +5,19 @@ public class BankAccount {
     private static float totalMoney;
 
     public BankAccount() {
-        this.checkingBalance = 0.0;
-        this.savingBalance = 0.0;
+        this(0.0, 0.0);
+    }
+    public BankAccount(double checkBalance, double savBalance) {
+        this.checkingBalance = checkBalance;
+        this.savingBalance = savBalance;
         numOfAccounts++;
     }
 
     public double getCheckingBalance() {
-        return this.checkingBalance;
+        return checkingBalance;
     }
     public double getSavingBalance() {
-        return this.savingBalance;
+        return savingBalance;
     }
 
     public void depositMoney(String accountType, double amount) {
@@ -26,6 +29,9 @@ public class BankAccount {
             this.savingBalance += amount;
             totalMoney += amount;
         }
+        else {
+            System.out.println("Deposit to either checking or saving account.");
+        }
     }
 
     public void withdrawMoney(String accountType, double amount) {
@@ -36,6 +42,9 @@ public class BankAccount {
         else if (accountType == "saving" && this.savingBalance >= amount) {
             this.savingBalance -= amount;
             totalMoney -= amount;
+        }
+        else {
+            System.out.println("Insufficient funds.");
         }
     }
     public void displayAccounts() {
