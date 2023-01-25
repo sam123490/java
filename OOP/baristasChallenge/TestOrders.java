@@ -29,20 +29,18 @@ public class TestOrders {
         order5.addItem(item2);
         order5.addItem(item4);
 
+        System.out.println(order2.getStatusMessage());
+        order1.setReady(true);
+        System.out.println(order1.getStatusMessage());
+        order3.setReady(true);
+        System.out.println(order3.getStatusMessage());
+        
+        System.out.println(order1.getOrderTotal());
+        
         order1.display();
         order2.display();
         order3.display();
         order4.display();
         order5.display();
-
-        order1.setReady(true);
-        System.out.println(order1.getStatusMessage());
-        order3.setReady(false);
-        System.out.println(order3.getStatusMessage());
-
-        System.out.println(order1.getOrderTotal());
-
-
-
     }
 }

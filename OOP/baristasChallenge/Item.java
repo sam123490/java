@@ -7,19 +7,18 @@ public class Item {
         this.price = price;
     }
 
+    // Getters and Setters for name and price
     public String getName() {
         return name;
     }
-
-    public void setName(String newName) {
-        this.name = newName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrice() {
         return price;
     }
-
-    public void setPrice(double newPrice) {
-        this.price = newPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
