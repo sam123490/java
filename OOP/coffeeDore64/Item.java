@@ -9,23 +9,23 @@ public class Item {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
-    public void setName(String newName) {
-        this.name = newName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrice() {
-        return this.price;
+        return price;
     }
-    public void setPrice(double newPrice) {
-        this.price = newPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getIndex() {
-        return this.index;
+        return index;
     }
-    public void setIndex(int newIndex) {
-        this.index = newIndex;
+    public void setIndex(int index) {
+        this.index = index;
     }
 }
