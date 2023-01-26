@@ -25,5 +25,4 @@ public class MammalTest {
 		dracula.displayEnergy();
 		
 	}
-
 }

@@ -29,19 +29,28 @@ public class CoffeeKiosk {
         // Create a new order with the given input string
         Order newOrder = new Order(name);
         // Show the user the menu, so they can choose items to add.
-        newOrder.display();
+        displayMenu();
         // Prompts the user to enter an item number
         System.out.println("Please enter a menu item index or q to quit:");
         String itemNumber = System.console().readLine();
         
         // Write a while loop to collect all user's order items
         while(!itemNumber.equals("q")) {
-            Item menuItem = new Item();
+
             // Get the item object from the menu, and add the item to the order
+            try{
+                newOrder.addItem(menu.get(Integer.parseInt(itemNumber)));
+            }catch(IndexOutOfBoundsException i){
+                System.out.println("Invalid selection");
+            }catch(NumberFormatException n){
+                System.out.println("Invalid selection");
+            }
             // Ask them to enter a new item index or q again, and take their input
+            System.out.println("Please enter a menu item index or q to quit:");
+            itemNumber = System.console().readLine();
         }
         // After you have collected their order, print the order details 
         // as the example below. You may use the order's display method.
-        
+        newOrder.display();
     }
 }
