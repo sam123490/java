@@ -7,7 +7,7 @@ public class Car {
 	}
 	
 	public int getGas() {
-		System.out.println("gas remaining: " + gas);
+		System.out.println("Gas remaining: " + gas);
 		return gas;
 	}
 	
