@@ -1,11 +1,10 @@
-package mammal;
+package java.oop.zookeeper;
 
 public class Bat extends Mammal {
 	
 	public Bat() {
 		super(300);
 	}
-	
 	
 	public void fly() {
 		System.out.println("WOOoooshhhhh!");

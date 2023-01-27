@@ -1,4 +1,4 @@
-package mammal;
+package java.oop.zookeeper;
 
 public class Gorilla extends Mammal {
 	

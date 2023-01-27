@@ -1,6 +1,6 @@
-package mammal;
+package java.oop.zookeeper;
 
-public class MammalTest {
+public class Test {
 
 	public static void main(String[] args) {
 		// Gorilla Test
@@ -24,5 +24,7 @@ public class MammalTest {
 		dracula.attackTown();
 		dracula.displayEnergy();
 		
+		// Static Method Test		
+		Mammal.mammalCount();
 	}
 }
