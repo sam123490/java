@@ -55,7 +55,7 @@ public class DaikichiRoutesApplication {
 						+ "a great time to spend time with family and friends";
 			}
 			else {
-				return "https://www.youtube.com/watch?v=coyMil9mV9o";
+				return "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 			}
 		}
 	}
