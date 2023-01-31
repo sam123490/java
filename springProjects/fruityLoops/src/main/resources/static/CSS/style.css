@@ -1,0 +1,10 @@
+h1 {
+	padding: 10px;
+	color: rgb(255,182,194);
+	border: 3px solid purple;
+	margin-bottom: 15px;
+}
+
+th, td {
+	color: rgb(255,182,194);
+}
