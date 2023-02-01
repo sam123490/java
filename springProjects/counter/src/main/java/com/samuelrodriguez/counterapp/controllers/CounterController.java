@@ -10,29 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CounterController {
 	
 	@RequestMapping("/my_server/counter")
-	public String index(HttpSession session, Model model) {
+	public String index(HttpSession session) {
 		if(session.getAttribute("count") == null) {
 			Integer count = 0;
 			session.setAttribute("count", count);
-			model.addAttribute("count", count);
 			return "index.jsp";
 		}
 		return "count.jsp";
 	}
 	
 	@RequestMapping("/my_server")
-	public String counter(HttpSession session, Model model) {
+	public String counter(HttpSession session) {
 		if(session.getAttribute("count") == null) {
-			Integer count = 0;
+			Integer count = 1;
 			session.setAttribute("count", count);
-			model.addAttribute("count", count);
 			return "index.jsp";
 		}
 		else {
 			Integer currentCount = (Integer) session.getAttribute("count");
 			currentCount++;
 			session.setAttribute("count", currentCount);
-			model.addAttribute("count", currentCount);
 			return "index.jsp";
 		}
 	}
