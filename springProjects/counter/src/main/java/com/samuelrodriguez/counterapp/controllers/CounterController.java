@@ -1,9 +1,7 @@
 package com.samuelrodriguez.counterapp.controllers;
 
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -14,7 +12,7 @@ public class CounterController {
 		if(session.getAttribute("count") == null) {
 			Integer count = 0;
 			session.setAttribute("count", count);
-			return "index.jsp";
+			return "count.jsp";
 		}
 		return "count.jsp";
 	}
