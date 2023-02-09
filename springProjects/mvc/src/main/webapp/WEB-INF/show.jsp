@@ -9,11 +9,13 @@
 </head>
 <body>
 	
-	<div class="container">
+	<div class="container mt-2">
 		<h1><c:out value="${ book.title }"></c:out></h1>
 		<p><c:out value="${ book.description }"></c:out></p>
 		<p><c:out value="${ book.language }"></c:out></p>
 		<p><c:out value="${ book.numberOfPages }"></c:out></p>
+		
+		<a href="/books" class="btn btn-warning">Return</a>
 	</div>
 </body>
 </html>
