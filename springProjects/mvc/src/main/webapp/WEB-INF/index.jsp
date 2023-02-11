@@ -29,6 +29,7 @@
 				</tr>
 				</c:forEach>
 			</table>
+			<a href="/books/new" class="btn btn-primary">Create Book</a>
 	</div>
 </body>
 </html>
