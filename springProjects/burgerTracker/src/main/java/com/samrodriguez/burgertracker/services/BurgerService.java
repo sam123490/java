@@ -30,7 +30,36 @@ public class BurgerService {
 	         return optionalBurger.get();
 	     } else {
 	         return null;
-	     
+	     }
 	}
- }
-}  
+	
+	public Burger updateBurger(Burger b) {
+		return burgerRepository.save(b);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -19,6 +19,7 @@
 					<th>Restaurant Name</th>
 					<th>Rating (out of 5)</th>
 					<th>Notes</th>
+					<th>Action</th>
 				</tr>
 				<c:forEach var="burger" items="${ allBurgers }">
 					<tr>
@@ -26,6 +27,7 @@
 						<td><c:out value="${ burger.restaurant }"></c:out></td>
 						<td><c:out value="${ burger.rating }"></c:out></td>
 						<td><c:out value="${ burger.notes }"></c:out></td>
+						<td><a href="burgers/${ burger.id }">Edit</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -48,7 +50,7 @@
 				<form:errors path="notes"/>
 				<form:input type="text" path="notes" class="form-control"/>
 				
-				<input type="submit" value="Submit" class="btn btn-success"/>
+				<input type="submit" value="Submit" class="btn btn-success mt-2"/>
 			</form:form>
 		</div>
 	</div>
