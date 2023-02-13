@@ -37,7 +37,7 @@ public class BurgerController {
 		return "index.jsp";
 	}
 	
-	@PostMapping("/burgers/save")
+	@PostMapping("/burgers")
 	public String saveBurger(@Valid @ModelAttribute("burger") Burger burger, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			List<Burger> burgers = burgerService.allBurgers();

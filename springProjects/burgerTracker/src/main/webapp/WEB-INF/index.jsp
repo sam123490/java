@@ -33,7 +33,7 @@
 			</table>
 		</div>
 		<div>
-			<form:form action="/burgers/save" method="post" modelAttribute="burger">
+			<form:form action="/burgers" method="post" modelAttribute="burger">
 				<form:label class="form-label" path="name">Burger Name</form:label>
 				<form:errors path="name"/>
 				<form:input type="text" path="name" class="form-control"/>
