@@ -12,6 +12,9 @@
 <body>
 	<div class="container">
 		<form:form action="/burgers/${ burger.id }/update" method="post" modelAttribute="burger">
+			<input type="hidden" name="_method" value="PUT" />
+			<form:input type="hidden" path="id"/>
+			
 			<form:label class="form-label" path="name">Burger Name</form:label>
 			<form:errors path="name"/>
 			<form:input type="text" path="name" class="form-control"/>

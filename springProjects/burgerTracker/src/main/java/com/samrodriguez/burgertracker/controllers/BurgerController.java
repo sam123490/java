@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -56,7 +57,7 @@ public class BurgerController {
 		return "edit.jsp";
 	}
 	
-	@PostMapping(value="burgers/{id}/update")
+	@PutMapping(value="burgers/{id}/update")
 	public String updateBurger(@Valid @ModelAttribute("burger") Burger burger,
 			BindingResult result, @PathVariable("id") Long id, Model model) {
 		if (result.hasErrors()) {
