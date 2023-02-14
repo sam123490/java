@@ -17,45 +17,55 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="costs")
-public class Cost {
+@Table(name="expenses")
+public class Expense {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
 	@Size(min=3, max=100, message="must be at least 3 characters")
-	private String expense;
+	private String name;
 	@NotNull
 	@Size(min=3, max=100, message="must be at least 3 characters")
 	private String vendor;
-	@NotNull
+	@NotNull(message="can not be empty")
 	@Min(5)
 	private Integer amount;
+	@NotNull
+	@Size(min=5, max=200, message="needs to be at least 5 characters")
+	private String description;
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyy-MM-dd")
 	private Date createdAt;
 	@DateTimeFormat(pattern="yyy-MM-dd")
 	private Date updatedAt;
 	
-	public Cost() {
+	public Expense() {
 	}
-	public Cost(String expense, String vendor, Integer amount) {
+	public Expense(String name, String vendor, Integer amount, String description) {
 		super();
-		this.expense = expense;
+		this.name = name;
 		this.vendor = vendor;
 		this.amount = amount;
+		this.description = description;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getExpense() {
-		return expense;
-	}
-	public void setExpense(String expense) {
-		this.expense = expense;
 	}
 	public String getVendor() {
 		return vendor;

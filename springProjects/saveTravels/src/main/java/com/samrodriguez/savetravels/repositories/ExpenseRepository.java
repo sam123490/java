@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.samrodriguez.savetravels.models.Cost;
+import com.samrodriguez.savetravels.models.Expense;
 
-public interface CostRepository extends CrudRepository<Cost, Long> {
-	List<Cost> findAll();
+public interface ExpenseRepository extends CrudRepository<Expense, Long> {
+	List<Expense> findAll();
 }

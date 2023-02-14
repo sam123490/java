@@ -6,19 +6,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit an Expense</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-	<div class="container">
-		<h1>Edit Cost</h1>
-		<form:form action="/expenses/${ cost.id }" method="post" modelAttribute="cost">	
+	<div class="container mt-2">
+		<h1>Edit Expense</h1>
+		<form:form action="/expenses/${ expense.id }/edit" method="post" modelAttribute="expense">	
 			<input type="hidden" name="_method" value="PUT" />
 			<form:input type="hidden" path="id" />
 				
-			<form:label path="expense" class="form-label">Expense:</form:label>
-			<form:errors path="expense" />
-			<form:input type="text" path="expense" class="form-control" />
+			<form:label path="name" class="form-label">Name:</form:label>
+			<form:errors path="name" />
+			<form:input type="text" path="name" class="form-control" />
 			
 			<form:label path="vendor" class="form-label">Vendor:</form:label>
 			<form:errors path="vendor" />
@@ -27,8 +27,14 @@
 			<form:label path="amount" class="form-label">Amount:</form:label>
 			<form:errors path="amount" />
 			<form:input type="number" path="amount" class="form-control" />
-		
-			<input type="submit" value="Submit" class="btn btn-success mt-2" />
+			
+			<form:label path="description" class="form-label">Description:</form:label>
+			<form:errors path="description" />
+			<form:input type="text" path="description" class="form-control" />
+			<div class="d-flex mt-2">
+				<input type="submit" value="Submit" class="btn btn-success" />
+				<a href="/expenses" class="btn btn-danger ms-2">Cancel</a>
+			</div>
 		</form:form>
 	</div>
 </body>
