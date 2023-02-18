@@ -34,7 +34,7 @@ public class Ninja {
 	@NotNull(message="Please enter age.")
 	private Integer age;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="dojo_id")
 	@NotNull(message="Please select a Dojo.")
 	private Dojo dojo;

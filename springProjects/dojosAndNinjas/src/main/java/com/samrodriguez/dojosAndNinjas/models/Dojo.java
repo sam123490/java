@@ -27,7 +27,7 @@ public class Dojo {
 	@NotBlank(message="Please enter a name.")
 	private String name;
 	
-	@OneToMany(mappedBy="dojo", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="dojo", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Ninja> ninjas;
 	
 	@Column(updatable = false)
