@@ -1,6 +1,5 @@
 package com.samrodriguez.authentication.models;
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -34,7 +33,7 @@ public class User {
 	private String email;
 	
 	@NotBlank(message="Please enter password.")
-	@Size(min=9, message="Password must be atleast 8 characters.")
+	@Size(min=8, message="Password must be atleast 8 characters.")
 	private String password;
 	
 	@Transient
