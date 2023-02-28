@@ -29,13 +29,37 @@
 				<th>Title</th>
 				<th>Author Name</th>
 				<th>Posted By</th>
+				<th>Actions</th>
 			</tr>
 			<c:forEach var="book" items="${ allBooks }">
 				<tr>
 					<td><c:out value="${ book.id }" /></td>
 					<td> <a href="/books/${ book.id }"> <c:out value="${ book.title }" /> </a> </td>
 					<td><c:out value="${ book.author }" /></td>
-					<td><c:out value="${ book.user.firstName }" /></td>
+					<c:choose>
+						<c:when test = "${ book.user.id == loggedUser.id }">
+							<td>You</td>
+						</c:when>
+						<c:otherwise>
+							<td><c:out value="${ book.user.firstName }" /></td>
+						</c:otherwise>
+					</c:choose>
+					<td>
+						<c:choose>
+							<c:when test = "${ book.user.id == loggedUser.id }" >
+								<form action="/books/delete/${ book.id }" method="post">
+									<a href="/books/edit/${ book.id }" class="btn btn-link">Edit</a>
+    								<input type="hidden" name="_method" value="delete">
+    								<input type="submit" value="Delete" class="btn btn-link">
+								</form>
+
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="btn btn-link">Borrow</a>
+							</c:otherwise>
+						</c:choose>
+					
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
