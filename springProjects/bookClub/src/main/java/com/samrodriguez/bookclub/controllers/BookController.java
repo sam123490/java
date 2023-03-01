@@ -69,9 +69,9 @@ public class BookController {
 		return "show-book.jsp";
 	}
 	
-	@GetMapping("/books/edit/{bookId}")
+	@GetMapping("/books/edit/{id}")
 	public String editBook(
-			@PathVariable("bookId") Long bookId,
+			@PathVariable("id") Long bookId,
 			HttpSession session,
 			Model model
 			) {
@@ -82,12 +82,15 @@ public class BookController {
 		return "edit-book.jsp";
 	}
 	
-	@PutMapping("/books/edit/{bookId}")
+	@PutMapping("/books/edit/{id}")
 	public String saveEdit(
 			@Valid @ModelAttribute("book") Book book,
 			BindingResult result,
 			HttpSession session
 			) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/";
+		}
 		if (result.hasErrors()) {
 			return "edit-book.jsp";
 		} else {
@@ -96,7 +99,36 @@ public class BookController {
 		}
 	}
 	
-//	@GetMapping("/books/delete/{bookId}")
+	@GetMapping("books/borrow/{bookId}")
+	public String borrowBook(
+			@PathVariable("bookId") Long bookId,
+//			@Valid @ModelAttribute("book") Book book,
+//			BindingResult result,
+			HttpSession session
+			) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/";
+		}
+		Book book = bookService.getOne(bookId);
+		book.setBorrower(userService.getOne( (Long) session.getAttribute("userId")));
+		bookService.createOrUpdate(book);
+		return "redirect:/dashboard";
+	}
+	
+	@GetMapping("/books/return/{id}")
+	public String returnBook(
+			@PathVariable("id") Long id,
+			HttpSession session
+			) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/";
+		}
+		Book book = bookService.getOne(id);
+		book.setBorrower(null);
+		bookService.createOrUpdate(book);
+		return "redirect:/dashboard";
+	}
+	
 	@DeleteMapping("/books/delete/{bookId}")
 	public String removeBook(
 			@PathVariable("bookId") Long bookId,

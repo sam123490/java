@@ -32,34 +32,67 @@
 				<th>Actions</th>
 			</tr>
 			<c:forEach var="book" items="${ allBooks }">
+				<c:choose>
+					<c:when test = "${ book.borrower == loggedUser }"></c:when>
+					<c:otherwise>
+						<tr>
+							<td><c:out value="${ book.id }" /></td>
+							<td> <a href="/books/${ book.id }"> <c:out value="${ book.title }" /> </a> </td>
+							<td><c:out value="${ book.author }" /></td>
+							<c:choose>
+								<c:when test = "${ book.user.id == loggedUser.id }">
+									<td>You</td>
+								</c:when>
+								<c:otherwise>
+									<td><c:out value="${ book.user.firstName }" /></td>
+								</c:otherwise>
+							</c:choose>
+							<td>
+								<c:choose>
+									<c:when test = "${ book.user.id == loggedUser.id }" >
+										<form action="/books/delete/${ book.id }" method="post">
+											<a href="/books/edit/${ book.id }" class="btn btn-link">Edit</a>
+		    								<input type="hidden" name="_method" value="delete">
+		    								<input type="submit" value="Delete" class="btn btn-link">
+										</form>
+		
+									</c:when>
+									<c:otherwise>
+										<a href="/books/borrow/${ book.id }" class="btn btn-link">Borrow</a>
+		<%-- 							<form:form action="/books/borrow/${ book.id }" method="post" modelAttribute="${ book }">
+											<input type="hidden" name="_method" value="put" />
+											<form:input type="hidden" path="title" />
+											<form:input type="hidden" path="author" />
+											<form:input type="hidden" path="thoughts" />
+											<form:input type="hidden" path="user" />
+											<input type="hidden" path="borrower" value="${ loggedUser }" />
+											
+											<input type="submit" value="Borrow" class="btn btn-link"/>
+										</form:form> --%>
+									</c:otherwise>
+								</c:choose>
+							</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</table>
+		<h3>Borrowed Books</h3>
+		<table class="table table-striped mt-4">
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Author Name</th>
+				<th>Posted By</th>
+				<th>Actions</th>
+			</tr>
+			<c:forEach var="book" items="${ borrowedBooks }" >
 				<tr>
 					<td><c:out value="${ book.id }" /></td>
-					<td> <a href="/books/${ book.id }"> <c:out value="${ book.title }" /> </a> </td>
+					<td><a href="/books/${ book.id }"><c:out value="${ book.title }" /></a></td>
 					<td><c:out value="${ book.author }" /></td>
-					<c:choose>
-						<c:when test = "${ book.user.id == loggedUser.id }">
-							<td>You</td>
-						</c:when>
-						<c:otherwise>
-							<td><c:out value="${ book.user.firstName }" /></td>
-						</c:otherwise>
-					</c:choose>
-					<td>
-						<c:choose>
-							<c:when test = "${ book.user.id == loggedUser.id }" >
-								<form action="/books/delete/${ book.id }" method="post">
-									<a href="/books/edit/${ book.id }" class="btn btn-link">Edit</a>
-    								<input type="hidden" name="_method" value="delete">
-    								<input type="submit" value="Delete" class="btn btn-link">
-								</form>
-
-							</c:when>
-							<c:otherwise>
-								<a href="#" class="btn btn-link">Borrow</a>
-							</c:otherwise>
-						</c:choose>
-					
-					</td>
+					<td><c:out value="${ book.user.firstName }" /></td>
+					<td><a href="/books/return/${ book.id }">Return</a></td>
 				</tr>
 			</c:forEach>
 		</table>

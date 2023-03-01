@@ -36,10 +36,14 @@ public class Book {
 	@NotBlank(message="Please enter your thoughts on the book.")
 	@Size(min=10, max=200, message="thoughts must be between 10 and 200 characters.")
 	private String thoughts;
-	
+
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="borrower_id")
+	private User borrower;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -112,6 +116,14 @@ public class Book {
 		this.updatedAt = updatedAt;
 	}
 
+	public User getBorrower() {
+		return borrower;
+	}
+
+	public void setBorrower(User borrower) {
+		this.borrower = borrower;
+	}
+	
 	@PrePersist
 	public void onCreate() {
 		this.createdAt = new Date();

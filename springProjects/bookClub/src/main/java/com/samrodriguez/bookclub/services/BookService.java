@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.samrodriguez.bookclub.models.Book;
+import com.samrodriguez.bookclub.models.User;
 import com.samrodriguez.bookclub.repositories.BookRepository;
 
 @Service
@@ -16,6 +17,10 @@ public class BookService {
 	
 	public List<Book> getAll(){
 		return bookRepo.findAll();
+	}
+	
+	public List<Book> getAllBorrowed(User user){
+		return bookRepo.findAllByBorrowerIs(user);
 	}
 	
 	public Book getOne(Long id) {
