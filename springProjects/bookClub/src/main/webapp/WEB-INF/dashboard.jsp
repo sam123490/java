@@ -59,16 +59,6 @@
 									</c:when>
 									<c:otherwise>
 										<a href="/books/borrow/${ book.id }" class="btn btn-link">Borrow</a>
-		<%-- 							<form:form action="/books/borrow/${ book.id }" method="post" modelAttribute="${ book }">
-											<input type="hidden" name="_method" value="put" />
-											<form:input type="hidden" path="title" />
-											<form:input type="hidden" path="author" />
-											<form:input type="hidden" path="thoughts" />
-											<form:input type="hidden" path="user" />
-											<input type="hidden" path="borrower" value="${ loggedUser }" />
-											
-											<input type="submit" value="Borrow" class="btn btn-link"/>
-										</form:form> --%>
 									</c:otherwise>
 								</c:choose>
 							</td>

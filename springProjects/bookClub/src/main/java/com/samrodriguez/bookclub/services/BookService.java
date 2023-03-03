@@ -15,6 +15,9 @@ public class BookService {
 	@Autowired
 	private BookRepository bookRepo;
 	
+	@Autowired
+	private UserService userService;
+	
 	public List<Book> getAll(){
 		return bookRepo.findAll();
 	}
@@ -30,6 +33,18 @@ public class BookService {
 		} else {
 			return null;
 		}
+	}
+	
+	public void updateBorrower(Long bookId, Long userId) {
+		Book book = getOne(bookId);
+		book.setBorrower(userService.getOne(userId));
+		bookRepo.save(book);
+	}
+	
+	public void removeBorrower(Long bookId) {
+		Book book = getOne(bookId);
+		book.setBorrower(null);
+		bookRepo.save(book);
 	}
 	
 	public void createOrUpdate(Book book) {

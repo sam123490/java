@@ -102,16 +102,12 @@ public class BookController {
 	@GetMapping("books/borrow/{bookId}")
 	public String borrowBook(
 			@PathVariable("bookId") Long bookId,
-//			@Valid @ModelAttribute("book") Book book,
-//			BindingResult result,
 			HttpSession session
 			) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
-		Book book = bookService.getOne(bookId);
-		book.setBorrower(userService.getOne( (Long) session.getAttribute("userId")));
-		bookService.createOrUpdate(book);
+		bookService.updateBorrower(bookId, (Long) session.getAttribute("userId"));
 		return "redirect:/dashboard";
 	}
 	
@@ -123,9 +119,7 @@ public class BookController {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
-		Book book = bookService.getOne(id);
-		book.setBorrower(null);
-		bookService.createOrUpdate(book);
+		bookService.removeBorrower(id);
 		return "redirect:/dashboard";
 	}
 	

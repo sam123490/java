@@ -28,7 +28,6 @@ public class UserController {
 		}
 		model.addAttribute("loggedUser", userService.getOne((Long) session.getAttribute("userId")));
 		model.addAttribute("allBooks", bookService.getAll());
-//		model.addAttribute("borrowedBooks", bookService.getAllBorrowed( (Long) session.getAttribute("userId")));
 		model.addAttribute("borrowedBooks", bookService.getAllBorrowed(userService.getOne( (Long) session.getAttribute("userId"))));
 		return "dashboard.jsp";
 	}
