@@ -49,7 +49,7 @@ public class BookController {
 		if (result.hasErrors()) {
 			return "new-book.jsp";
 		}
-		bookService.createOrUpdate(newBook, (Long) session.getAttribute("userId"));
+		bookService.create(newBook, (Long) session.getAttribute("userId"));
 		return "redirect:/dashboard";
 		
 	}
@@ -93,7 +93,7 @@ public class BookController {
 		if (result.hasErrors()) {
 			return "edit-book.jsp";
 		} else {
-			bookService.createOrUpdate(book);
+			bookService.update(book);
 			return "redirect:/dashboard";
 		}
 	}
