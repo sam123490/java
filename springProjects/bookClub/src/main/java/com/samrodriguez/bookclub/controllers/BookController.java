@@ -49,8 +49,7 @@ public class BookController {
 		if (result.hasErrors()) {
 			return "new-book.jsp";
 		}
-		newBook.setUser(userService.getOne( (Long) session.getAttribute("userId")));
-		bookService.createOrUpdate(newBook);
+		bookService.createOrUpdate(newBook, (Long) session.getAttribute("userId"));
 		return "redirect:/dashboard";
 		
 	}

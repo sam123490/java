@@ -47,8 +47,9 @@ public class BookService {
 		bookRepo.save(book);
 	}
 	
-	public void createOrUpdate(Book book) {
-		bookRepo.save(book);
+	public void createOrUpdate(Book newBook, Long userId) {
+		newBook.setUser(userService.getOne(userId));
+		bookRepo.save(newBook);
 	}
 	
 	public void deleteBook(Long id) {
